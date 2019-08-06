@@ -78,11 +78,27 @@
 
     function print_favourite_colours($people) {
         // BEGIN EXERCISE 6.
+        foreach ($people as $key => $value){
+            echo "$key's favourite candy is $value <br>";
+        }
     }
 
+    //print_favourite_colours($people);
     function print_colour_occurrences($people) {
         // BEGIN EXERCISE 7.
+        $counter_array = array_count_values($people);
+        foreach ($counter_array as $colour => $count){
+            print_r($counter_array);
+            if ($colour == '1'){
+                echo "1 person has $colour as their favourite colour<br>";
+            }
+            else{
+                echo "$count people have $colour as their favourite colour<br>";
+            }
+        }
     }
+
+    print_colour_occurrences($people);
 
 
 ?>
