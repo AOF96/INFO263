@@ -48,9 +48,10 @@ function getAllItems($conn)
  */
 function insertItem($item, $conn)
 {
-
-    $query = sprintf("INSERT INTO shopping_list VALUES( %s, %d, %d)", $item['name'], $item['price'], $item['quantity']);
-
+    $name = sanitizeInput($item->getName(), $conn);
+    $price = sanitizeInput($item->getPrice(), $conn);
+    $quantity = sanitizeInput($item->getQuantity(), $conn);
+    $query = sprintf("INSERT INTO shopping_list VALUES(NULL,'%s', %d, %d)", $name, $price, $quantity);
     $result = $conn->query($query);
     if (!result) die($conn->error);
 }
@@ -63,7 +64,10 @@ function insertItem($item, $conn)
  */
 function deleteItem($item_name, $conn)
 {
-
+    $item_name = sanitizeInput($item_name, $conn);
+    $query = sprintf("DELETE FROM shopping_list WHERE name='%s'", $item_name);
+    $result = $conn->query($query);
+    if (!result) die($conn->error);
 }
 
 /**
@@ -73,7 +77,9 @@ function deleteItem($item_name, $conn)
  */
 function clearShoppingList($conn)
 {
-
+    $query = "TRUNCATE shopping_list";
+    $result = $conn->query($query);
+    if (!result) die($conn->error);
 }
 
 /**
@@ -91,7 +97,11 @@ function clearShoppingList($conn)
  */
 function sanitizeInput($input, $conn)
 {
-
+    if (get_magic_quotes_gpc()) {
+        $input = stripslashes($input);
+    }
+    $input = $conn->real_escape_string($input);
+    return htmlentities($input);
 }
 
 /**
