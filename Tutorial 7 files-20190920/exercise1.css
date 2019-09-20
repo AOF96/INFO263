@@ -1,0 +1,19 @@
+/* Create your stylesheet here! */
+.redText {
+    color: red;
+}
+
+.greenBorder {
+    border: green;
+    border-style: solid;
+}
+
+.blueText {
+    color: blue;
+}
+.pTesting {
+    color: fuchsia;
+    border: blueviolet;
+    font-style: italic;
+;
+}
