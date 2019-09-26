@@ -1,1 +1,27 @@
 /* Add your styles here */
+.redText {
+    color: red;
+}
+
+.greenBorder {
+    border: green;
+    border-style: solid;
+}
+
+.blueText {
+    color: blue;
+}
+.pTesting {
+    color: fuchsia;
+    border: blueviolet;
+    font-style: italic;
+;
+}
+
+.backgroundColor {
+    background-color: blue;
+}
+
+.backgroundColor2 {
+    background-color: gold;
+}
